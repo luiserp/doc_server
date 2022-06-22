@@ -86,4 +86,5 @@ if __name__ == '__main__':
         # The license should be one of the standard open source
         # licenses: https://opensource.org/licenses/alphabetical
         license='MIT',
+        url='https://github.com/luiserp/doc_server'
     )

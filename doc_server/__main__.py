@@ -3,8 +3,8 @@ from pathlib import Path
 import sys
 import webbrowser
 from zipfile import ZipFile, is_zipfile
-from utils.logger import Logger
-from utils.server import Manager, DualStackServer
+from doc_server.utils.logger import Logger
+from doc_server.utils.server import Manager, DualStackServer
 
 def main():
     parser = ArgumentParser(description="Manage and review documentations of some languages and technologies")

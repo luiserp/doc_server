@@ -1,7 +1,13 @@
+from pathlib import Path
 import setuptools
 
 if __name__ == '__main__':
-    setuptools.setup(
+
+    # read the contents of your README file
+    this_directory = Path(__file__).parent
+    long_description = (this_directory / "README.md").read_text()
+
+    setuptools.setup (
         name='doc_server',
         version='0.1',
         # This automatically detects the packages in the specified
@@ -16,7 +22,7 @@ if __name__ == '__main__':
             # standalone scripts. In this case it would add the
             # spam command to run in your shell.
             'console_scripts': [
-                'doc_server = main:main',
+                'doc_server = doc_server.__main__:main',
             ],
         },
         # Packages required to use this one, it is possible to
@@ -75,8 +81,9 @@ if __name__ == '__main__':
         description='Manage and review documentations of some languages and technologies',
         # For this parameter I would recommend including the
         # README.rst
-        long_description='Manage and review documentations of some languages and technologies',
+        long_description=long_description,
+        long_description_content_type='text/markdown',
         # The license should be one of the standard open source
         # licenses: https://opensource.org/licenses/alphabetical
-        license='BSD',
+        license='MIT',
     )

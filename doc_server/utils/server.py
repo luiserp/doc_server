@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Any, Callable, List
 import contextlib
 
-from utils.logger import Logger
+from doc_server.utils.logger import Logger
 
 class Manager:
 

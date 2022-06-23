@@ -16,6 +16,18 @@ class Logger:
         print(f"{bcolors.HEADER}Documentation directory: {bcolors.ENDC}{bcolors.OKBLUE}{doc_dir}{bcolors.ENDC}")
 
     @staticmethod
+    def show_dir_name(dir):
+        print(f"   > {bcolors.OKCYAN}{dir.name}{bcolors.ENDC}")
+
+    @staticmethod
+    def directory_not_found(dir):
+        print(f"{bcolors.FAIL}Directory {bcolors.WARNING}{dir}{bcolors.ENDC} not found{bcolors.ENDC}")
+
+    @staticmethod
+    def directory_deleted(dir):
+        print(f"{bcolors.OKGREEN}Directory {bcolors.WARNING}{dir}{bcolors.ENDC} deleted{bcolors.ENDC}")
+
+    @staticmethod
     def server_on(name, port):
         print(f"{bcolors.OKGREEN}{name}{bcolors.ENDC} on {bcolors.OKCYAN}{bcolors.UNDERLINE} http://localhost:{port}{bcolors.ENDC}{bcolors.ENDC}")
 

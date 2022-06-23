@@ -5,7 +5,7 @@ import sys
 import threading
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from typing import Any, Callable, List
+from typing import Any, Callable, List, Tuple
 import contextlib
 
 from doc_server.utils.logger import Logger
@@ -25,7 +25,7 @@ class Manager:
 
         Logger.serving_docs(self.doc_dir.absolute())
         for dir in self.doc_list:
-            s = self.create_server(dir, self.start_port)
+            s = self.create_server(str(dir), self.start_port)
             self.start_port = s.port + 1
             self.servers.append(s)
             th = threading.Thread(target=s.start)
@@ -69,7 +69,7 @@ class Server:
 
 class RequestHandler(SimpleHTTPRequestHandler):
 
-    def log_request(self, code: int | str = ..., size: int | str = ...) -> None:
+    def log_request(self, code: int or str = ..., size: int or str = ...) -> None:
         return ""
 
     def log_error(self, format: str, *args: Any) -> None:
@@ -81,7 +81,7 @@ class RequestHandler(SimpleHTTPRequestHandler):
 # ensure dual-stack is not disabled; ref #38907
 class DualStackServer(ThreadingHTTPServer):
     
-    def __init__(self, server_address: tuple[str, int], RequestHandlerClass: Callable[..., BaseRequestHandler], bind_and_activate: bool = ..., directory = os.getcwd()) -> None:
+    def __init__(self, server_address: Tuple[str, int], RequestHandlerClass: Callable[..., BaseRequestHandler], bind_and_activate: bool = ..., directory = os.getcwd()) -> None:
         super().__init__(server_address, RequestHandlerClass, bind_and_activate)
         self.directory = directory
 
